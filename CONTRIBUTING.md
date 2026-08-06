@@ -40,3 +40,23 @@ sentence about what makes that project different, and make sure `live` resolves.
 
 Open an issue with the URL, the viewport width, and what you expected. A broken or moved
 live link is a valid and welcome issue.
+
+## Claiming an issue
+
+Want to pick something up? Just comment on the issue saying you'd like to work on
+it. A workflow adds the `claimed` label so nobody else duplicates your effort.
+
+Two small rules keep things fair:
+
+- **Two open claims per person.** If you already hold two claimed issues, we'll ask
+  you to finish one first so other people get a turn. Comment again once one lands
+  and the next is yours.
+- **Claims go stale after 14 days.** If a claimed issue sees no activity for two
+  weeks, the label is removed and it goes back in the pool. No hard feelings, and
+  you can always claim it again.
+
+Link your pull request to the issue in the PR description (for example
+`Closes #12`). When that PR is merged the issue closes itself, and if the PR is
+closed without being merged the claim is released so someone else can pick it up.
+
+No pressure on timelines otherwise. Ask questions in the issue thread any time.

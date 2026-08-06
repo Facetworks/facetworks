@@ -24,7 +24,11 @@ const canonical = new URL(Astro.url.pathname, Astro.site).href
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
-    <meta property="og:image" content={new URL('/og.svg', Astro.site).href} />
+    <meta property="og:image" content={new URL('/og.png', Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Facetworks — An index of design-forward frontend work" />
+    <meta property="og:site_name" content="Facetworks" />
     <meta name="twitter:card" content="summary_large_image" />
     <script is:inline>
       // Marks that scripting is available. Every optional animation is scoped to

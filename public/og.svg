@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <rect width="1200" height="630" fill="#f3f1ec"/>
+  <g fill="none" stroke="#cdc9c0" stroke-width="2">
+    <path d="M0 80h1200M0 550h1200"/>
+  </g>
+  <path d="M980 210 1090 274v128l-110 64-110-64V274Z" fill="none" stroke="#14140f" stroke-width="6" stroke-linejoin="round"/>
+  <path d="M980 210v128l110 64M980 338 870 402" fill="none" stroke="#7a3b1f" stroke-width="5" stroke-linejoin="round"/>
+  <text x="90" y="300" font-family="Georgia, serif" font-size="92" fill="#14140f">Facetworks</text>
+  <text x="90" y="366" font-family="Georgia, serif" font-size="44" font-style="italic" fill="#55534b">An index of design-forward frontend work</text>
+  <text x="90" y="470" font-family="ui-monospace, monospace" font-size="26" letter-spacing="4" fill="#55534b">10 DESIGN SITES / 2 GPU EXPERIMENTS</text>
+</svg>

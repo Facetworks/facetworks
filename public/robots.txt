@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://facetworks.signalizeai.org/sitemap-index.xml

@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import Entry from '../components/Entry.astro'
+import { byCollection, collections, projects } from '../data/projects'
+
+const sites = byCollection('sites')
+const experiments = byCollection('experiments')
+const year = new Date().getFullYear()
+---
+
+<BaseLayout
+  title="Facetworks — an index of design-forward frontend work"
+  description="An index of the Facetworks repositories: ten multi-page Astro design sites, each in a different genre, and two browser GPU experiments."
+>
+  <a
+    href="#index"
+    class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-50 focus:bg-ink focus:px-3 focus:py-2 focus:text-paper"
+    >Skip to the index</a
+  >
+
+  <div class="mx-auto w-full max-w-[76rem] px-5 sm:px-8 lg:px-12">
+    <header class="flex items-baseline justify-between border-b border-rule py-6">
+      <span class="font-serif text-lg tracking-[-0.01em]">Facetworks</span>
+      <span class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-ink-soft">
+        Index
+      </span>
+    </header>
+
+    <section class="grid gap-10 py-16 sm:py-24 lg:grid-cols-[1.35fr_1fr] lg:gap-16">
+      <div>
+        <h1
+          class="font-serif text-[clamp(2.6rem,8vw,5.5rem)] leading-[0.95] tracking-[-0.03em]"
+        >
+          Twelve pieces of<br /><em class="italic">design-forward</em> frontend.
+        </h1>
+        <p class="mt-8 max-w-[46ch] text-base leading-relaxed text-ink-soft sm:text-lg">
+          Every entry below is its own repository, its own visual identity, and its own
+          deployment. This page is only the frame around them. Each one is loud in a
+          different way, so this one stays quiet.
+        </p>
+      </div>
+      <dl
+        class="grid grid-cols-2 gap-x-6 gap-y-8 self-end border-t border-rule pt-8 lg:border-l lg:border-t-0 lg:pl-12 lg:pt-0"
+      >
+        <div>
+          <dt class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-soft">
+            Projects
+          </dt>
+          <dd class="mt-1 font-serif text-4xl">{projects.length}</dd>
+        </div>
+        <div>
+          <dt class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-soft">
+            Genres
+          </dt>
+          <dd class="mt-1 font-serif text-4xl">
+            {new Set(projects.map((p) => p.genre)).size}
+          </dd>
+        </div>
+        <div>
+          <dt class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-soft">
+            Rendering
+          </dt>
+          <dd class="mt-1 text-sm leading-snug text-ink-soft">
+            Static-first. Readable with JavaScript disabled.
+          </dd>
+        </div>
+        <div>
+          <dt class="font-mono text-[0.65rem] uppercase tracking-[0.2em] text-ink-soft">
+            Licence
+          </dt>
+          <dd class="mt-1 text-sm leading-snug text-ink-soft">MIT, all repositories.</dd>
+        </div>
+      </dl>
+    </section>
+
+    <main id="index" class="pb-12">
+      {
+        [
+          { key: 'sites' as const, list: sites, offset: 0 },
+          { key: 'experiments' as const, list: experiments, offset: sites.length },
+        ].map(({ key, list, offset }) => (
+          <section class="pt-10 sm:pt-16">
+            <div class="reveal grid gap-4 pb-2 sm:grid-cols-[3.5rem_1fr] sm:gap-8">
+              <h2 class="font-mono text-[0.68rem] uppercase tracking-[0.2em] text-ink-soft sm:col-start-1">
+                {collections[key].title}
+              </h2>
+              <p class="max-w-[60ch] text-sm leading-relaxed text-ink-soft sm:col-start-2">
+                {collections[key].blurb}
+              </p>
+            </div>
+            {list.map((p, i) => (
+              <Entry project={p} index={offset + i + 1} />
+            ))}
+          </section>
+        ))
+      }
+    </main>
+
+    <footer
+      class="flex flex-col gap-4 border-t border-rule py-10 text-sm text-ink-soft sm:flex-row sm:items-center sm:justify-between"
+    >
+      <p class="max-w-[48ch] leading-relaxed">
+        Built with Astro. The index is generated from one typed data file, so adding a
+        project is a single entry.
+      </p>
+      <div class="flex flex-wrap gap-x-6 gap-y-2">
+        <a
+          class="underline decoration-rule underline-offset-4 hover:text-ink"
+          href="https://github.com/Facetworks"
+          rel="noopener">github.com/Facetworks</a
+        >
+        <span class="font-mono text-[0.7rem] tracking-[0.08em]">&copy; {year}</span>
+      </div>
+    </footer>
+  </div>
+</BaseLayout>

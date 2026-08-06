@@ -1,0 +1,63 @@
+---
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description: string
+}
+
+const { title, description } = Astro.props
+const canonical = new URL(Astro.url.pathname, Astro.site).href
+---
+
+<!doctype html>
+<html lang="en" class="tooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <meta name="theme-color" content="#f3f1ec" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL('/og.svg', Astro.site).href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <script is:inline>
+      // Marks that scripting is available. Every optional animation is scoped to
+      // `.js`, so the page is complete and static without this line running.
+      document.documentElement.classList.add('js')
+    </script>
+  </head>
+  <body>
+    <slot />
+    <script is:inline>
+      ;(function () {
+        var nodes = document.querySelectorAll('.reveal')
+        if (!('IntersectionObserver' in window)) {
+          nodes.forEach(function (n) {
+            n.classList.add('is-in')
+          })
+          return
+        }
+        var io = new IntersectionObserver(
+          function (entries) {
+            entries.forEach(function (e) {
+              if (e.isIntersecting) {
+                e.target.classList.add('is-in')
+                io.unobserve(e.target)
+              }
+            })
+          },
+          { rootMargin: '0px 0px -8% 0px', threshold: 0.05 },
+        )
+        nodes.forEach(function (n) {
+          io.observe(n)
+        })
+      })()
+    </script>
+  </body>
+</html>

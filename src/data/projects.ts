@@ -27,7 +27,7 @@ export const collections: Record<Collection, { title: string; blurb: string }> =
   sites: {
     title: 'Design sites',
     blurb:
-      'Ten multi-page sites, each a different genre with its own type, palette, and motion language. Built with Astro, static-first, and verified to read completely with JavaScript disabled.',
+      'Twelve multi-page sites, each a different genre with its own type, palette, and motion language. Built with Astro, static-first, and verified to read completely with JavaScript disabled.',
   },
   experiments: {
     title: 'GPU experiments',
@@ -37,6 +37,24 @@ export const collections: Record<Collection, { title: string; blurb: string }> =
 }
 
 export const projects: readonly Project[] = [
+  {
+    slug: 'quire',
+    name: 'Quire',
+    genre: 'Type foundry',
+    note: 'Type-led identity where the specimens are real text at real sizes: waterfalls, a glyph grid, and an axis table per family.',
+    stack: ['Astro', 'React island', 'Tailwind v4', 'Variable fonts'],
+    live: 'https://quire.signalizeai.org',
+    collection: 'sites',
+  },
+  {
+    slug: 'fathom',
+    name: 'Fathom',
+    genre: 'Research institute',
+    note: 'Built as a water column, with a linear depth scale in CSS and a temperature cast drawn as SVG from the same numbers the table prints.',
+    stack: ['Astro', 'React island', 'Tailwind v4', 'CSS and SVG charts'],
+    live: 'https://fathom.signalizeai.org',
+    collection: 'sites',
+  },
   {
     slug: 'nebula',
     name: 'Nebula',

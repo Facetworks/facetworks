@@ -2,3 +2,8 @@
   Cache-Control: public, max-age=31536000, immutable
 /
   Cache-Control: public, max-age=0, must-revalidate
+
+# The generated surfaces (org profile, hire funnel) read this file, so a stale
+# edge copy silently produces a stale table somewhere else.
+/projects.json
+  Cache-Control: public, max-age=0, must-revalidate
